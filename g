@@ -593,3 +593,209 @@ setlocale(LC_ALL,"");
 
     printf("\n \n VOCE COMPLETOU AS PALAVRAS CRUZADAS !!!!!");
 }
+#include <string.h>
+#include <locale.h>
+#include <stdio.h>
+#include <stdlib.h>
+ typedef struct{
+        char gabarito[6];
+    }t_pergunta;
+
+void criartabuleiro( char matriz[7][5]){
+    for(int i =0; i < 7;i++){
+        for( int j =0; j < 5; j++){
+           matriz[i][j] = ' ';
+        }
+    }
+}
+
+
+void criar_tabela(char matriz[7][5]){
+    printf("  ");
+    for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 6; j++){
+                printf("| %c ", matriz[i][j]);
+            }
+            printf("\n  ______________________\n");
+            printf("  ");
+    }
+}
+void encaixar_resposta_tabuleiro(char matriz[7][5], int questao, char palavra[6]){
+
+        if( questao == 1){
+            for(int i = 0 ;i < 4; i++){
+                matriz[1][i+ 1] = palavra [i];
+            }
+        }
+        if( questao == 2){
+            for(int i = 0 ;i < 5; i++){
+                matriz[4][i] = palavra [i];
+            }
+        }
+        if( questao == 3){
+            for(int i = 0 ;i < 3; i++){
+                matriz[6][i+ 2] = palavra [i];
+            }
+        }
+        if( questao == 4){
+            for(int i = 0 ;i < 5; i++){
+                matriz[i][1] = palavra [i];
+            }
+        }
+        if( questao == 5){
+            for(int i = 0 ;i < 3; i++){
+                matriz[i + 1][3] = palavra [i];
+            }
+        }
+        if( questao == 6){
+            for(int i = 0 ;i < 4; i++){
+                matriz[i+3][4] = palavra [i];
+            }
+        }
+}
+void main()
+{
+char matriz[7][5];
+
+criartabuleiro( matriz);
+
+t_pergunta pergunta[6];
+
+
+
+setlocale(LC_ALL,"");
+    printf("iniciando o jogo...\n");
+    printf("PALAVRAS NA HORIZONTAL: \n");
+    printf("1) metal precioso de 4 letras \n");
+    printf("2) item magnético (3 letras) \n \n");
+    printf("PALAVRAS NA VERTICAL: \n");
+    printf("3) plantação de legumes \n");
+    printf("4) sinonimo de monarca \n");
+    printf("5) garfo e _____ \n");
+
+    printf("\n");
+
+    criar_tabela(matriz);
+    int questao;
+    char palavra[6];
+    for( int i = 0; i < 5; i++){
+        printf("\n \nEAI, JÁ ADVINHOU ALGUMA PALAVRA? QUAL ? \n"); scanf("%i", &questao);
+        getchar();
+        printf("digite a palavra %i: \n" , questao); fgets(palavra,6,stdin);
+        getchar();
+
+        encaixar_resposta_tabuleiro(matriz,questao, palavra);
+
+        criar_tabela(matriz);
+
+
+
+
+    }
+
+    printf("\n \n VOCE COMPLETOU AS PALAVRAS CRUZADAS !!!!!");
+}
+
+#include <string.h>
+#include <locale.h>
+#include <stdio.h>
+#include <stdlib.h>
+ typedef struct{
+        char gabarito[6];
+    }t_pergunta;
+
+void criartabuleiro( char matriz[7][5]){
+    for(int i =0; i < 7;i++){
+        for( int j =0; j < 5; j++){
+           matriz[i][j] = ' ';
+        }
+    }
+}
+
+
+void criar_tabela(char matriz[7][5]){
+    printf("  ");
+    for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 6; j++){
+                printf("| %c ", matriz[i][j]);
+            }
+            printf("\n  ______________________\n");
+            printf("  ");
+    }
+}
+void encaixar_resposta_tabuleiro(char matriz[7][5], int questao, char palavra[6]){
+
+        if( questao == 1){
+            for(int i = 0 ;i < 4; i++){
+                matriz[1][i+ 1] = palavra [i];
+            }
+        }
+        if( questao == 2){
+            for(int i = 0 ;i < 5; i++){
+                matriz[4][i] = palavra [i];
+            }
+        }
+        if( questao == 3){
+            for(int i = 0 ;i < 3; i++){
+                matriz[6][i+ 2] = palavra [i];
+            }
+        }
+        if( questao == 4){
+            for(int i = 0 ;i < 5; i++){
+                matriz[i][1] = palavra [i];
+            }
+        }
+        if( questao == 5){
+            for(int i = 0 ;i < 3; i++){
+                matriz[i + 1][3] = palavra [i];
+            }
+        }
+        if( questao == 6){
+            for(int i = 0 ;i < 4; i++){
+                matriz[i+3][4] = palavra [i];
+            }
+        }
+}
+void main()
+{
+char matriz[7][5];
+
+criartabuleiro( matriz);
+
+t_pergunta pergunta[6];
+
+
+
+setlocale(LC_ALL,"");
+    printf("iniciando o jogo...\n");
+    printf("PALAVRAS NA HORIZONTAL: \n");
+    printf("1) metal precioso de 4 letras \n");
+    printf("2) item magnético (3 letras) \n \n");
+    printf("PALAVRAS NA VERTICAL: \n");
+    printf("3) plantação de legumes \n");
+    printf("4) sinonimo de monarca \n");
+    printf("5) garfo e _____ \n");
+
+    printf("\n");
+
+    criar_tabela(matriz);
+    int questao;
+    char palavra[6];
+    for( int i = 0; i < 5; i++){
+        printf("\n \nEAI, JÁ ADVINHOU ALGUMA PALAVRA? QUAL ? \n"); scanf("%i", &questao);
+        getchar();
+        printf("digite a palavra %i: \n" , questao); fgets(palavra,6,stdin);
+        getchar();
+
+        encaixar_resposta_tabuleiro(matriz,questao, palavra);
+
+        criar_tabela(matriz);
+
+
+
+
+    }
+
+    printf("\n \n VOCE COMPLETOU AS PALAVRAS CRUZADAS !!!!!");
+}
+
