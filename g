@@ -976,3 +976,182 @@ setlocale(LC_ALL,"");
     }
     
 }
+00000000000000000000000000000000000000000000000000000000000000
+
+
+#include <string.h>
+#include <locale.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+void criartabuleiro( char **matriz){
+    for(int i =0; i < 7;i++){
+        for( int j =0; j < 5; j++){
+           matriz[i][j] = ' ';
+        }
+    }
+}
+
+
+void criar_tabela(char **matriz){
+    printf("  ");
+    for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 6; j++){
+                printf("| %c ", matriz[i][j]);
+            }
+            printf("\n  ______________________\n");
+            printf("  ");
+    }
+}
+
+void verificar_resposta(char *palavra, int questao){
+    if(questao == 1){
+        if(strcmp(palavra,"ouro") != 0){
+            do{
+                printf("resposta incorreta, tente novamente \n");
+                printf("digite a palavra %i:  \n" , questao); scanf("%s", palavra);;
+                getchar();
+             }while(strcmp(palavra,"ouro") != 0);
+
+        }
+    }
+    if(questao == 2){
+        if(strcmp(palavra,"barba") != 0){
+            do{
+                printf("resposta incorreta, tente novamente \n");
+                printf("digite a palavra %i:  \n" , questao); scanf("%s", palavra);;
+                getchar();
+             }while(strcmp(palavra,"barba") != 0);
+
+        }
+        
+    }
+    if(questao == 3){
+        if(strcmp(palavra,"ima") != 0){
+            do{
+                printf("resposta incorreta, tente novamente \n");
+                printf("digite a palavra %i:  \n" , questao); scanf("%s", palavra);;
+                getchar();
+             }while(strcmp(palavra,"ima") != 0);
+
+        }
+        
+    }
+    if(questao == 4){
+        if(strcmp(palavra,"horta") != 0){
+            do{
+                printf("resposta incorreta, tente novamente \n");
+                printf("digite a palavra %i:  \n" , questao); scanf("%s", palavra);;
+                getchar();
+             }while(strcmp(palavra,"horta") != 0);
+
+        }
+        
+    }
+    if(questao == 5){
+        if(strcmp(palavra,"rei") != 0){
+            do{
+                printf("resposta incorreta, tente novamente \n");
+                printf("digite a palavra %i:  \n" , questao); scanf("%s", palavra);;
+                getchar();
+             }while(strcmp(palavra,"barba") != 0);
+
+        }
+        
+    }
+    if(questao == 6){
+        if(strcmp(palavra,"faca") != 0){
+            do{
+                printf("resposta incorreta, tente novamente \n");
+                printf("digite a palavra %i:  \n" , questao); scanf("%s", palavra);
+                getchar();
+             }while(strcmp(palavra,"faca") != 0);
+
+        }
+        
+    }
+}
+
+void encaixar_resposta_tabuleiro( char **matriz, int questao, char *palavra){
+
+        if( questao == 1){
+            for(int i = 0 ;i < 4; i++){
+                matriz[1][i+ 1] = palavra [i];
+            }
+        }
+        
+        if( questao == 2){
+            for(int i = 0 ;i < 3; i++){
+                matriz[6][i+ 2] = palavra [i];
+            }
+        }
+        if( questao == 3){
+            for(int i = 0 ;i < 5; i++){
+                matriz[i][1] = palavra [i];
+            }
+        }
+        if( questao == 4){
+            for(int i = 0 ;i < 3; i++){
+                matriz[i + 1][3] = palavra [i];
+            }
+        }
+        if( questao == 5){
+            for(int i = 0 ;i < 4; i++){
+                matriz[i+3][4] = palavra [i];
+            }
+        }
+}
+
+void main()
+{
+char **matriz =  malloc(7 * sizeof(*matriz));
+    for (int lin = 0; lin < 7; lin++) {
+        matriz[lin] = malloc(5 * sizeof(*matriz[lin]));
+    }
+
+int questao;
+char *palavra = malloc(6 * sizeof(char)); 
+char *termino = malloc(6 * sizeof(char));
+
+
+criartabuleiro( matriz);
+
+setlocale(LC_ALL,"");
+    printf("iniciando o jogo...\n");
+    printf("PALAVRAS NA HORIZONTAL: \n");
+    printf("1) metal precioso (4 letras) \n");
+    printf("2) item magnético (3 letras) \n \n");
+    printf("PALAVRAS NA VERTICAL: \n");
+    printf("3) plantação de legumes (5 letras) \n");
+    printf("4) sinonimo de monarca (3 letras) \n");
+    printf("5) garfo e _____ (4 letras) \n");
+
+    printf("\n");
+
+    criar_tabela(matriz);
+  
+    for( int i = 0; i < 5; i++){
+        printf("\n \nEAI, JÁ ADVINHOU ALGUMA PALAVRA? QUAL ? \n"); scanf("%i", &questao);
+        getchar();
+        printf("digite a palavra %i: \n" , questao); scanf("%s", &palavra);
+        getchar();
+        
+        verificar_resposta(palavra, questao);
+        
+        encaixar_resposta_tabuleiro(matriz,questao, palavra);
+
+        criar_tabela(matriz);
+        
+        printf("gostaria de terminar de jogar? "); scanf("%s", termino);
+        if(strcmp(termino,"sim") == 0){
+            break;
+        }
+    }
+    if(strcmp(termino,"sim") == 0){
+        printf("FINALIZANDO...");
+    }
+    else{
+        printf("\n \n VOCE COMPLETOU AS PALAVRAS CRUZADAS !!!!!");
+    }
+    free(matriz);free(termino); free(palavra);
+}
