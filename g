@@ -804,9 +804,7 @@ setlocale(LC_ALL,"");
 #include <locale.h>
 #include <stdio.h>
 #include <stdlib.h>
- typedef struct{
-        char gabarito[6];
-    }t_pergunta;
+ 
 
 void criartabuleiro( char matriz[7][5]){
     for(int i =0; i < 7;i++){
@@ -840,17 +838,6 @@ void verificar_resposta(char palavra[6], int questao){
         }
     }
     if(questao == 2){
-        if(strcmp(palavra,"barba") != 0){
-            do{
-                printf("resposta incorreta, tente novamente \n");
-                printf("digite a palavra %i:  \n" , questao); scanf("%s", palavra);;
-                getchar();
-             }while(strcmp(palavra,"barba") != 0);
-
-        }
-        
-    }
-    if(questao == 3){
         if(strcmp(palavra,"ima") != 0){
             do{
                 printf("resposta incorreta, tente novamente \n");
@@ -861,7 +848,7 @@ void verificar_resposta(char palavra[6], int questao){
         }
         
     }
-    if(questao == 4){
+    if(questao == 3){
         if(strcmp(palavra,"horta") != 0){
             do{
                 printf("resposta incorreta, tente novamente \n");
@@ -872,7 +859,7 @@ void verificar_resposta(char palavra[6], int questao){
         }
         
     }
-    if(questao == 5){
+    if(questao == 4){
         if(strcmp(palavra,"rei") != 0){
             do{
                 printf("resposta incorreta, tente novamente \n");
@@ -883,7 +870,7 @@ void verificar_resposta(char palavra[6], int questao){
         }
         
     }
-    if(questao == 6){
+    if(questao == 5){
         if(strcmp(palavra,"faca") != 0){
             do{
                 printf("resposta incorreta, tente novamente \n");
@@ -937,7 +924,6 @@ char palavra[6], termino[3];
 
 criartabuleiro( matriz);
 
-setlocale(LC_ALL,"");
     printf("iniciando o jogo...\n");
     printf("PALAVRAS NA HORIZONTAL: \n");
     printf("1) metal precioso (4 letras) \n");
@@ -952,7 +938,7 @@ setlocale(LC_ALL,"");
     criar_tabela(matriz);
   
     for( int i = 0; i < 5; i++){
-        printf("\n \nEAI, JÁ ADVINHOU ALGUMA PALAVRA? QUAL ? \n"); scanf("%i", &questao);
+        printf("\n \nEAI, JÁ ADVINHOU ALGUMA PALAVRA? QUAL A QUESTÃO DELA ? \n"); scanf("%i", &questao);
         getchar();
         printf("digite a palavra %i: \n" , questao); scanf("%s", &palavra);
         getchar();
@@ -963,7 +949,7 @@ setlocale(LC_ALL,"");
 
         criar_tabela(matriz);
         
-        printf("gostaria de terminar de jogar? "); scanf("%s", termino);
+        printf("\ngostaria de terminar de jogar? "); scanf("%s", termino);
         if(strcmp(termino,"sim") == 0){
             break;
         }
